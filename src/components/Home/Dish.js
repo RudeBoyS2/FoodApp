@@ -1,4 +1,5 @@
-import { Card, Button, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, Button, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
+import { useState } from "react";
 
 const Dish = (props) => {
   const {
@@ -9,9 +10,18 @@ const Dish = (props) => {
     price,
     healthScore,
     time,
+    glutenFree,
+    vegan,
+    sourceUrl,
     onAddDishToMenu,
     onDeleteDishFromMenu,
   } = props;
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  console.log(dish)
 
   return (
     <Card
@@ -40,7 +50,31 @@ const Dish = (props) => {
             Delete from menu
           </Button>
         )}
-        <Button variant="warning mx-2">See details...</Button>
+        <Button variant="warning mx-2" onClick={handleShow}>
+          See details...
+        </Button>
+        <Modal variant="warning" show={show} onHide={handleClose} className="text-center">
+          <Modal.Header closeButton className="d-flex flex-column-reverse">
+            <Modal.Title>
+              {title}
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Dish price is: ${price}.
+            <br />
+            Dish cooking time is: {time} minutes.
+            <br />
+            Dish Health Score is: {healthScore}.
+            <br />
+            Gluten free: {glutenFree.toString().toUpperCase()}.
+            <br />
+            Vegan: {vegan.toString().toUpperCase()}.
+            <br />
+            <a className="modal-a" href={sourceUrl}>See Recipe</a>
+            <br />
+            <img className="modal-img" src={image} alt="Dish" />
+          </Modal.Body>
+        </Modal>
       </Card.Body>
     </Card>
   );

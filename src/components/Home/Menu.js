@@ -47,6 +47,7 @@ const Menu = (props) => {
       className="menu home mt-5 d-flex flex-column justify-content-between"
     >
       <Row className="d-flex justify-content-center align-items-center">
+        {menu.length > 0 && <h1 className="text-center mt-2">Menu</h1>}
         {menu.length < 1 ? (
           <h1 className="text-center mt-2">Menu</h1>
         ) : (
@@ -60,6 +61,9 @@ const Menu = (props) => {
               title={dish.title}
               time={dish.readyInMinutes}
               onDeleteDishFromMenu={onDeleteDishFromMenu}
+              glutenFree={dish.glutenFree}
+              vegan={dish.vegan}
+              sourceUrl={dish.sourceUrl}
             />
           ))
         )}

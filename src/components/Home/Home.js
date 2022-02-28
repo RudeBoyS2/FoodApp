@@ -105,63 +105,66 @@ const Home = (props) => {
 
   return (
     <main className="home">
-      <div>
-        <Navbar className="bg-dark" variant="dark" expand="lg">
-          <Container>
-            <Navbar.Brand className="text-light">
-              <img
-                src="https://i.ibb.co/3rqfKRX/hamburger.png"
-                width="30"
-                height="30"
-                className="d-inline-block align-top"
-                alt="logo"
-              />{" "}
-              Alkemy Challenge
-            </Navbar.Brand>
-            <Navbar.Toggle />
-            <Navbar.Collapse className="justify-content-end">
-              <form onSubmit={handleSubmit} className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Agrega un plato..."
-                  className="me-2"
-                  aria-label="Search"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <Button variant="outline-warning" type="submit">
-                  Buscar
-                </Button>
-              </form>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-        <Container
-          fluid
-          className="d-flex justify-content-center align-items-center"
-        >
-          <Row className="first-row d-flex justify-content-center align-items-center">
-            {dishes.length < 1 ? (
-              <h1 className="text-white text-center">Search for a dish...</h1>
-            ) : (
-              dishes.map((dish) => (
-                <Dish
-                  dish={dish}
-                  key={dish.id}
-                  image={dish.image}
-                  healthScore={dish.healthScore}
-                  price={dish.pricePerServing}
-                  title={dish.title}
-                  time={dish.readyInMinutes}
-                  onAddDishToMenu={onAddDishToMenu}
-                  menu={menu}
-                />
-              ))
-            )}
-          </Row>
+      <Navbar className="bg-dark" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand className="text-light">
+            <img
+              src="https://i.ibb.co/3rqfKRX/hamburger.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="logo"
+            />{" "}
+            Alkemy Challenge
+          </Navbar.Brand>
+          <Navbar.Toggle />
+          <Navbar.Collapse className="justify-content-end">
+            <form onSubmit={handleSubmit} className="d-flex">
+              <FormControl
+                type="search"
+                placeholder="Add a dish..."
+                className="me-2"
+                aria-label="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <Button variant="outline-warning" type="submit">
+                Search
+              </Button>
+            </form>
+          </Navbar.Collapse>
         </Container>
-      </div>
+      </Navbar>
+
+      <Container
+        fluid
+        className="d-flex justify-content-center align-items-center"
+      >
+        <Row className="first-row d-flex justify-content-center align-items-center">
+          {dishes.length < 1 ? (
+            <h1 className="text-white text-center mt-5">
+              Search for a dish...
+            </h1>
+          ) : (
+            dishes.map((dish) => (
+              <Dish
+                dish={dish}
+                key={dish.id}
+                image={dish.image}
+                healthScore={dish.healthScore}
+                price={dish.pricePerServing}
+                title={dish.title}
+                time={dish.readyInMinutes}
+                onAddDishToMenu={onAddDishToMenu}
+                menu={menu}
+                glutenFree={dish.glutenFree}
+                vegan={dish.vegan}
+                sourceUrl={dish.sourceUrl}
+              />
+            ))
+          )}
+        </Row>
+      </Container>
       <Menu menu={menu} onDeleteDishFromMenu={onDeleteDishFromMenu} />
     </main>
   );

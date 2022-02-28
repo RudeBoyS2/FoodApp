@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { Navigate } from "react-router-dom";
-import axios from "../api/axios";
-import { LOGIN_URL } from "../api/login-url";
+import axios from "../../api/axios";
+import { LOGIN_URL } from "../../api/login-url";
 import swal from "sweetalert";
 import { Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 
