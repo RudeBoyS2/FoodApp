@@ -1,0 +1,55 @@
+//Function for adding platos to menu
+  const onAddPlatoToMenu = (platoAdded) => {
+    if (menu.length < 4) {
+      // Vegan platos logic //
+      if ((platoAdded.vegan === true) & (veganMenu <= 2)) {
+        if (veganMenu < 2) {
+          setVeganMenu((current) => current + 1);
+        } else if (veganMenu >= 2) {
+          alert("Has superado el maximo de platos veganos");
+          return;
+        }
+
+        if (menu.find((plato) => plato.id === platoAdded.id)) {
+          // setVeganMenu((current) => current - 1);
+          return;
+        }
+
+        setMenu((current) => [...current, platoAdded]);
+      }
+      // Vegan platos logic //
+
+      // notVegan platos logic //
+      if ((platoAdded.vegan === false) & (notVegan <= 2)) {
+        if (notVegan < 2) {
+          setNotVegan((current) => current + 1);
+        }
+        if (menu.find((plato) => plato.id === platoAdded.id)) {
+          setNotVegan((current) => current - 1);
+          return;
+        }
+
+        if (notVegan >= 2) {
+          alert("Has superado el máximo de platos no veganos");
+          return;
+        }
+
+        setMenu((current) => [...current, platoAdded]);
+      }
+      // notVegan platos logic //
+    } else {
+      alert("Solo puedes agregar un máximo de 4 platos al menú");
+    }
+  };
+
+  // Function to delete platos from menu
+  const onDeletePlatoFromMenu = (platoDeleted) => {
+    const filteredMenu = menu.filter((plato) => plato.id !== platoDeleted.id);
+    setMenu(filteredMenu);
+
+    if ((platoDeleted.vegan === true) & (veganMenu >= 2)) {
+      setVeganMenu((current) => current - 1);
+    } else {
+      setNotVegan((current) => current - 1);
+    }
+  };
