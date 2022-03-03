@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Food App: Alkemy Bootcamp Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my solution to Alkemy's React Challenge. It consists in a simple react web app to search and show different dishes, their description and stats, and the possibility to put them together in a 4 meal menu.
+
+# Build with
+This project was made with ReactJS, using the next libraries:
+- Axios library for fetching.
+- Spoonacular API.
+- Sweet alert.
+- Bootstrap 5 and React-Bootstrap for styling and responsive design.
+
 
 ## Available Scripts
 
