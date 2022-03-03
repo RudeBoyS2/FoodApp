@@ -69,8 +69,8 @@ const Menu = (props) => {
         )}
       </Row>
       {menu.length >= 1 && (
-        <Row className="d-flex flex-column text-center mt-5 mb-3">
-          <p>
+        <Row className="d-flex flex-column text-center mt-5 mb-3 shadow-lg">
+          <p className="mt-1">
             Total Price:<span> ${price()}.</span>
           </p>
 

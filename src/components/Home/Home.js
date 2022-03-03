@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Row, Container, Navbar, FormControl, Button } from "react-bootstrap";
 import Dish from "./Dish";
 import Menu from "../Home/Menu";
 import "./Home.css";
 import axios from "../../api/axios";
 import { API_KEY } from "../../api/spoonacularAPI";
+import { GrLogout } from "react-icons/gr";
 
 const Home = (props) => {
   // State
@@ -119,7 +121,7 @@ const Home = (props) => {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <form onSubmit={handleSubmit} className="d-flex">
+            <form onSubmit={handleSubmit} className="search-form d-flex">
               <FormControl
                 type="search"
                 placeholder="Add a dish..."
@@ -132,6 +134,9 @@ const Home = (props) => {
                 Search
               </Button>
             </form>
+            <Link onClick={() => localStorage.removeItem("token")} className="log-out button" to="/login" replace>
+                <GrLogout className="log-out" />
+            </Link>
           </Navbar.Collapse>
         </Container>
       </Navbar>
