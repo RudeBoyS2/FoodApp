@@ -20,7 +20,6 @@ const Home = (props) => {
   // Function to fetch the data from spoonacular API
   const getDishesData = async (e) => {
     try {
-      // setSearchTerm(e.target.value);
       const response = await axios.get(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=3&query=${searchTerm}&diet=${searchTerm}&addRecipeInformation=true&addRecipeNutrition=true`,
         {
@@ -33,10 +32,10 @@ const Home = (props) => {
     }
   };
 
+  // Function to handle search form's submit
   const handleSubmit = (e) => {
     e.preventDefault();
     clearTimeout(timeoutId);
-    // setSearchTerm(e.target.value);
     const timeout = setTimeout(() => {
       getDishesData(e.target.value);
     }, 1000);
@@ -60,7 +59,6 @@ const Home = (props) => {
         }
 
         if (menu.find((dish) => dish.id === dishAdded.id)) {
-          // setVeganMenu((current) => current - 1);
           return;
         }
 

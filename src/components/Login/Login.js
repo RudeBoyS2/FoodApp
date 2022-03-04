@@ -28,12 +28,10 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      // setEmail("");
-      // setPassword("");
       setAuth({ email, password });
       localStorage.setItem("token", response.data.token);
 
-      // Timeout for mimicking the time it takes for the response to be sent from a server.
+      // Timeout for mimicking the time it takes for a response to be sent from a server.
       setTimeout(() => {
         setSuccess(true);
       }, 2000);

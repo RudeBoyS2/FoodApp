@@ -17,11 +17,11 @@ const Dish = (props) => {
     onDeleteDishFromMenu,
   } = props;
 
+  // State
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(dish)
 
   return (
     <Card
